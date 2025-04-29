@@ -1,2 +1,3 @@
-# TravelMania
-TravelMania is a visually immersive travel guide website that showcases stunning destinations across the country.
+This is travelmania read me file 
+
+TO BE UPDATED SOON
