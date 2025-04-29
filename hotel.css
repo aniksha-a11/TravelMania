@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
-
 :root {
   --primary-color: #2563eb;
   --primary-color-dark: #1e40af;
@@ -12,13 +11,11 @@
   --glass-bg: rgba(255, 255, 255, 0.15);
   --max-width: 1400px;
 }
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   font-family: "Inter", sans-serif;
   background-color: var(--secondary-color);
@@ -26,13 +23,11 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
 }
-
 .section__container {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 3rem 1.5rem;
 }
-
 header {
   position: relative;
   height: 100vh;
@@ -42,7 +37,6 @@ header {
   overflow: hidden;
   background: var(--gradient);
 }
-
 .header__bg {
   position: absolute;
   top: 0;
@@ -55,7 +49,6 @@ header {
   transition: transform 0.2s ease;
   filter: brightness(0.8);
 }
-
 .header__overlay {
   position: absolute;
   top: 0;
@@ -65,7 +58,6 @@ header {
   background: rgba(0, 0, 0, 0.5);
   z-index: 1;
 }
-
 .header__content {
   position: relative;
   z-index: 2;
@@ -74,7 +66,6 @@ header {
   padding: 2rem;
   color: var(--extra-light);
 }
-
 .header__content h1 {
   font-size: clamp(3.5rem, 7vw, 6rem);
   font-weight: 900;
@@ -83,14 +74,12 @@ header {
   text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   animation: fadeIn 1s ease-out;
 }
-
 .header__content p {
   font-size: clamp(1.2rem, 2.5vw, 1.6rem);
   font-weight: 400;
   opacity: 0.95;
   animation: fadeIn 1.2s ease-out 0.3s forwards;
 }
-
 .search__container {
   background: var(--glass-bg);
   backdrop-filter: blur(12px);
@@ -105,7 +94,6 @@ header {
   z-index: 10;
   animation: slideIn 0.8s ease-out;
 }
-
 .search__container h2 {
   font-size: clamp(2rem, 3.5vw, 3rem);
   font-weight: 800;
@@ -114,18 +102,15 @@ header {
   text-align: center;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
-
 .search__form {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1.5rem;
   align-items: center;
 }
-
 .input__group {
   position: relative;
 }
-
 input, select, button, textarea {
   padding: 1.2rem 1.8rem;
   font-size: 1.1rem;
@@ -133,7 +118,6 @@ input, select, button, textarea {
   transition: all 0.4s ease;
   font-family: "Inter", sans-serif;
 }
-
 input, select, textarea {
   border: none;
   background-color: rgba(255, 255, 255, 0.9);
@@ -141,19 +125,16 @@ input, select, textarea {
   width: 100%;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
-
 textarea {
   resize: vertical;
   min-height: 120px;
 }
-
 input:focus, select:focus, textarea:focus {
   background-color: var(--extra-light);
   outline: none;
   box-shadow: 0 0 0 5px rgba(37, 99, 235, 0.3);
   transform: scale(1.03);
 }
-
 .input__icon {
   position: absolute;
   top: 50%;
@@ -162,16 +143,13 @@ input:focus, select:focus, textarea:focus {
   color: var(--text-light);
   font-size: 1.3rem;
 }
-
 input[placeholder], textarea[placeholder] {
   transition: all 0.4s ease;
 }
-
 input:focus::placeholder, textarea:focus::placeholder {
   opacity: 0;
   transform: translateY(-12px);
 }
-
 button {
   background: var(--accent-color);
   color: var(--extra-light);
@@ -186,13 +164,11 @@ button {
   justify-content: center;
   box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
 }
-
 button:hover {
   background: #ea580c;
   transform: translateY(-3px) scale(1.06);
   box-shadow: 0 8px 24px rgba(249, 115, 22, 0.5);
 }
-
 .intro__section {
   text-align: center;
   margin: 5rem auto;
@@ -202,7 +178,6 @@ button:hover {
   background: var(--gradient);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
 }
-
 .intro__section h3 {
   font-size: clamp(2rem, 3vw, 2.8rem);
   font-weight: 800;
@@ -210,13 +185,11 @@ button:hover {
   margin-bottom: 3rem;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
-
 .intro__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
 }
-
 .intro__card {
   background: var(--extra-light);
   border-radius: 1.5rem;
@@ -228,32 +201,27 @@ button:hover {
   flex-direction: column;
   justify-content: space-between;
 }
-
 .intro__card:hover {
   transform: translateY(-10px) scale(1.02);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
 }
-
 .intro__icon {
   font-size: 2.5rem;
   color: var(--primary-color);
   margin-bottom: 1rem;
 }
-
 .intro__card h4 {
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--text-dark);
   margin-bottom: 1rem;
 }
-
 .intro__card p {
   font-size: 1rem;
   color: var(--text-light);
   opacity: 0.9;
   flex-grow: 1;
 }
-
 .intro__image {
   width: 100%;
   height: 150px;
@@ -262,15 +230,12 @@ button:hover {
   margin-top: 1rem;
   transition: transform 0.3s ease;
 }
-
 .intro_card:hover .intro_image {
   transform: scale(1.05);
 }
-
 .flashcards__container {
   margin: 5rem auto;
 }
-
 .flashcards__container h3 {
   font-size: clamp(2rem, 3vw, 2.8rem);
   font-weight: 800;
@@ -280,13 +245,11 @@ button:hover {
   /* -webkit-background-clip: text; */
   -webkit-text-fill-color: transparent;
 }
-
 .flashcards__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
 }
-
 .flashcard {
   position: relative;
   border-radius: 1.5rem;
@@ -296,35 +259,29 @@ button:hover {
   background: var(--extra-light);
   cursor: pointer;
 }
-
 .flashcard:hover {
   transform: translateY(-10px) scale(1.02);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
 }
-
 .flashcard__image {
   width: 100%;
   height: 200px;
   object-fit: cover;
   transition: transform 0.5s ease;
 }
-
 .flashcard:hover .flashcard__image {
   transform: scale(1.1);
 }
-
 .flashcard__content {
   padding: 1.5rem;
   text-align: left;
 }
-
 .flashcard__content h4 {
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--text-dark);
   margin-bottom: 0.75rem;
 }
-
 .flashcard__content p {
   font-size: 1rem;
   color: var(--text-light);
@@ -765,11 +722,9 @@ button:hover {
   .faq__question {
     font-size: 1rem;
   }
-
   .popup__content {
     padding: 1.5rem;
   }
-
   .popup__content p {
     font-size: 1rem;
   }
