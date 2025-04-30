@@ -31,6 +31,81 @@
     <div class="loader" id="loader" style="display:none;">Generating your itinerary...</div>
     <div class="result" id="result"></div>
   </div>
+<<<<<<< HEAD
   <script src="script.js"></script>
+||||||| 0604d02
+  <script>
+    const form = document.getElementById('plannerForm');
+    const resultDiv = document.getElementById('result');
+    const loader = document.getElementById('loader');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      resultDiv.innerHTML = '';
+      loader.style.display = 'block';
+
+      const country = document.getElementById('country').value;
+      const startDate = document.getElementById('startDate').value;
+      const endDate = document.getElementById('endDate').value;
+      const budget = document.getElementById('budget').value;
+      const activities = Array.from(document.getElementById('activities').selectedOptions).map(o => o.value).join(', ');
+
+      try {
+        const response = await fetch('http://localhost:3000/api/plan', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ country, startDate, endDate, budget, activities })
+        });
+        const data = await response.json();
+        loader.style.display = 'none';
+        if (data.result) {
+          resultDiv.innerHTML = data.result;
+        } else {
+          resultDiv.innerHTML = "<b>Error:</b> " + (data.error || "Could not generate a plan.");
+        }
+      } catch (err) {
+        loader.style.display = 'none';
+        resultDiv.innerHTML = "<b>Error:</b> " + err.message;
+      }
+    });
+  </script>
+=======
+  <script>
+    const form = document.getElementById('plannerForm');
+    const resultDiv = document.getElementById('result');
+    const loader = document.getElementById('loader');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      resultDiv.innerHTML = '';
+      loader.style.display = 'block';
+
+      const country = document.getElementById('country').value;
+      const startDate = document.getElementById('startDate').value;
+      const endDate = document.getElementById('endDate').value;
+      const budget = document.getElementById('budget').value;
+      const activities = Array.from(document.getElementById('activities').selectedOptions).map(o => o.value).join(', ');
+
+      try {
+        const response = await fetch('http://localhost:3000/api/plan', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ country, startDate, endDate, budget, activities })
+        });
+        const data = await response.json();
+        loader.style.display = 'none';
+        if (data.result) {
+          resultDiv.innerHTML = data.result;
+        } else {
+          resultDiv.innerHTML = "<b>Error:</b> " + (data.error || "Could not generate a plan.");
+        }
+      } catch (err) {
+        loader.style.display = 'none';
+        resultDiv.innerHTML = "<b>Error:</b> " + err.message;
+        
+      }
+    });
+  </script>
+>>>>>>> b8e029debabcae7879516428600549e852322a75
 </body>
 </html>
