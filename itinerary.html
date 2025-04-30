@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Travel Planner</title>
+  <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+  <div class="container">
+    <h2>AI Travel Planner</h2>
+    <form id="plannerForm">
+      <label>Destination Country:</label>
+      <input type="text" id="country" placeholder="e.g. Italy" required>
+      <label>Start Date:</label>
+      <input type="date" id="startDate" required>
+      <label>End Date:</label>
+      <input type="date" id="endDate" required>
+      <label>Budget (USD):</label>
+      <input type="number" id="budget" min="100" required>
+      <label>Activities:</label>
+      <select id="activities" multiple required>
+        <option value="sightseeing">Sightseeing</option>
+        <option value="adventure">Adventure</option>
+        <option value="food">Food</option>
+        <option value="culture">Culture</option>
+        <option value="relaxation">Relaxation</option>
+        <option value="nature">Nature</option>
+      </select>
+      <button type="submit">Plan My Trip</button>
+    </form>
+    <div class="loader" id="loader" style="display:none;">Generating your itinerary...</div>
+    <div class="result" id="result"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
