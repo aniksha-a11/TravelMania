@@ -1,0 +1,100 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #EDE8D0;
+    margin: 0;
+    padding: 0;
+}
+.header {
+    background: #A76D4D;
+    color: #fff;
+    padding: 40px 0 20px 0;
+    text-align: center;
+}
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    background: #F5F5DC;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(87, 59, 33, 0.09);
+    padding: 30px;
+}
+.team-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 30px;
+}
+.flip-card {
+    background-color: transparent;
+    width: 250px;
+    height: 320px;
+    perspective: 1000px;
+}
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.7s cubic-bezier(.4,2.08,.55,.44);
+    transform-style: preserve-3d;
+}
+.flip-card:hover .flip-card-inner,
+.flip-card:focus-within .flip-card-inner {
+    transform: rotateY(180deg);
+}
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(87, 59, 33, 0.08);
+    overflow: hidden;
+}
+.flip-card-front {
+    background: #D9CBAE;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+.flip-card-front img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 4px solid #A76D4D;
+}
+.flip-card-front h3 {
+    color: #A76D4D;
+    margin: 12px 0 6px 0;
+}
+.flip-card-front p {
+    color: #5B3A29;
+    font-size: 15px;
+    margin: 0 12px 0 12px;
+}
+.flip-card-back {
+    background: #A76D4D;
+    color: #fff;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+.flip-card-back h3 {
+    margin: 0 0 10px 0;
+}
+.flip-card-back p {
+    font-size: 15px;
+    color: #F5F5DC;
+}
+@media (max-width: 700px) {
+    .team-list {
+        flex-direction: column;
+        align-items: center;
+    }
+}
