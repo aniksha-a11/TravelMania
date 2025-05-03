@@ -137,4 +137,9 @@ body {
       transform: scale(1);
     }
   }
+  ::placeholder {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 14px;
+    color: #555;
+  }
   
