@@ -21,6 +21,8 @@ window.addEventListener("scroll", () => {
 
 async function fetchPexelsImage(query, index) {
   // Note: Pexels API removed for simplicity; using fallback images
+
+  
   return fallbackImages[index % fallbackImages.length];
 }
 
