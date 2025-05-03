@@ -214,7 +214,7 @@ searchBtn.addEventListener("click", () => {
   const activeTab = document.querySelector(".search__tab.active");
 
   if (!activeTab || activeTab.dataset.tab !== "guides") {
-    return; 
+    return;
   }
 
   if (!query) {
@@ -238,4 +238,30 @@ searchInput.addEventListener("focus", () => {
 
 searchInput.addEventListener("blur", () => {
   searchInput.parentElement.style.boxShadow = "0 4px 15px rgba(0, 0, 0, 0.1)";
+});
+
+const newsletterForm = document.getElementById("newsletter-form");
+const newsletterPopup = document.getElementById("newsletter-popup");
+const popupClose = document.getElementById("popup-close");
+const popupBtn = newsletterPopup.querySelector(".popup__btn");
+
+newsletterForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  newsletterPopup.classList.add("show");
+  newsletterForm.reset();
+});
+
+popupClose.addEventListener("click", () => {
+  newsletterPopup.classList.remove("show");
+});
+
+popupBtn.addEventListener("click", () => {
+  newsletterPopup.classList.remove("show");
+});
+
+// Close popup when clicking outside
+newsletterPopup.addEventListener("click", (e) => {
+  if (e.target === newsletterPopup) {
+    newsletterPopup.classList.remove("show");
+  }
 });

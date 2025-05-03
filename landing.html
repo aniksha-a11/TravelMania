@@ -534,9 +534,9 @@
         </div>
         <div class="footer__col">
           <h4>Subscribe</h4>
-          <form action="/">
-            <input type="text" placeholder="Enter your email" />
-            <button class="btn">Subscribe</button>
+          <form id="newsletter-form">
+            <input type="email" placeholder="Enter your email" required />
+            <button type="submit" class="btn">Subscribe</button>
           </form>
         </div>
       </div>
@@ -544,6 +544,15 @@
         Copyright © 2025 TravelMania. All rights reserved.
       </div>
     </footer>
+
+    <div class="popup" id="newsletter-popup">
+      <div class="popup__content">
+        <span class="popup__close" id="popup-close">&times;</span>
+        <h3>Thank You!</h3>
+        <p>You have successfully subscribed to our newsletter.</p>
+        <button class="btn popup__btn">Close</button>
+      </div>
+    </div>
 
     <script src="landing.js"></script>
   </body>
