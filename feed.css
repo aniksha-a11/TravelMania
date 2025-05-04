@@ -67,6 +67,9 @@ body {
   input[type="text"],
   input[type="email"],
   textarea {
+    font-family: monospace;
+    font-size: 16px;
+    color: #555;
     width: 100%;
     padding: 0.75rem;
     margin-bottom: 0.75rem;
@@ -120,12 +123,12 @@ body {
   }
   
   button:nth-child(2) {
-    background-color: #268aff;
+    background-color: #2563eb;
     color: white;
   }
   
   button:nth-child(2):hover {
-    background-color: #268aff;
+    background-color: #1d4ed8;
   }
   
   @keyframes fadeIn {
@@ -141,5 +144,5 @@ body {
   ::placeholder {
     font-family: 'Segoe UI', sans-serif;
     font-size: 14px;
-    color: #555
+    color: #555;
   }
