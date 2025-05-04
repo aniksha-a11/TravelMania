@@ -17,13 +17,11 @@ body {
   border-radius: 12px;
   box-shadow: 0 2px 16px rgba(0,0,0,0.5);
 }
-
 label {
   display: block;
   margin-top: 16px;
   font-weight: bold;
 }
-
 input, select {
   width: 100%;
   padding: 8px;
