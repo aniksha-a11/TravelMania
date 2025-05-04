@@ -6,7 +6,6 @@ body {
     min-height: 100vh;
     position: relative;
   }
-  /* Background image with green overlay */
   body::before {
     content: "";
     position: fixed;
