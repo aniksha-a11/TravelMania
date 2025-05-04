@@ -7,8 +7,6 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="login.css">
     <title>Signin-Signup</title>
-
-    <title>signin-signup</title>
 </head>
 <body>
     <div class="container">
@@ -17,16 +15,12 @@
                 <h2 class="title">Sign in</h2>
                 <div class="input-field">
                     <i class="fas fa-user"></i>
-                    <input type="text" placeholder="Username">
-                </div>
-                <div class="input-field">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Password">
                     <input type="text" placeholder="Username" required minlength="3" pattern="^[A-Za-z0-9_]{3,}$" title="Username must be atleasst 3 characters long and only letters, numbers, or Underscores">
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Password" required minlength="8" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title="Password must be at least 8 characters long, with letters, numbers, and at least one special character.">
+                    <input type="password" placeholder="Password" required minlength="8" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()_+{}:;,.?~\-])[A-Za-z\d!@#$%^&*()_+{}:;,.?~\-]{8,}$"
+                    title="Password must be at least 8 characters long, with letters, numbers, and at least one special character.">
                 </div>
                 <input type="submit" value="Login" class="btn">
                 <p class="social-text">Or Sign in with social platform</p>
@@ -50,24 +44,16 @@
                 <h2 class="title">Sign up</h2>
                 <div class="input-field">
                     <i class="fas fa-user"></i>
-                    <input type="text" placeholder="Username">
+                    <input type="text" placeholder="Username" required minlength="6" pattern="^[A-za-z0-9_]{6,}$" title="Username must be at least 6 characters long and contain only numbers, letters, or underscores">
                 </div>
                 <div class="input-field">
                     <i class="fas fa-envelope"></i>
-                    <input type="text" placeholder="Email">
+                    <input type="email" placeholder="Email" required>
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Password">
-                    <input type="text" placeholder="Username" required minlength="6" pattern="^[A-Za-z0-9_]{6,}$" title="Username must be at least 6 characters long and contain only letters, numbers, or underscores">
-                </div>
-                <div class="input-field">
-                    <i class="fas fa-envelope"></i>
-                    <input type="text" placeholder="Email" required>
-                </div>
-                <div class="input-field">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Password" required minlength="8" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title="Password must be at least 8 characters long, with letters, numbers, and at least one special character">
+                    <input type="password" placeholder="Password" required minlength="8" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()_+{}:;,.?~\-])[A-Za-z\d!@#$%^&*()_+{}:;,.?~\-]{8,}$"
+                    title="Password must be at least 8 characters long, with letters, numbers, and at least one special character.">
                 </div>
                 <input type="submit" value="Sign up" class="btn">
                 <p class="social-text">Or Sign in with social platform</p>
@@ -91,8 +77,6 @@
         <div class="panels-container">
             <div class="panel left-panel">
                 <div class="content">
-                    <h3>Member of Brand?</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque accusantium dolor, eos incidunt minima iure?</p>
                     <h3>Already a Member of TravelMania?</h3>
                     <p>Sign in to explore new destinations and manage your trips!</p>
                     <button class="btn" id="sign-in-btn">Sign in</button>
@@ -101,8 +85,6 @@
             </div>
             <div class="panel right-panel">
                 <div class="content">
-                    <h3>New to Brand?</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque accusantium dolor, eos incidunt minima iure?</p>
                     <h3>New to TravelMania?</h3>
                     <p>Join now to discover amazing places, plan your adventures, and share your travel stories!</p>
                     <button class="btn" id="sign-up-btn">Sign up</button>
