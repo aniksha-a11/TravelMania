@@ -20,7 +20,7 @@ body {
   }
   
   h2 {
-    color: #2563eb;
+    color: #268aff;
     margin-bottom: 0.5rem;
   }
   
@@ -47,7 +47,7 @@ body {
   }
   
   .rating-options input:checked + div {
-    border: 2px solid #2563eb;
+    border: 2px solid #268aff;
     background-color: #dbeafe;
   }
   
@@ -78,7 +78,7 @@ body {
   
   input:focus,
   textarea:focus {
-    border-color: #2563eb;
+    border-color: #268aff;
     box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
   }
   
@@ -91,7 +91,7 @@ body {
   }
   
   .checkbox a {
-    color: #2563eb;
+    color: #268aff;
     text-decoration: underline;
   }
   
