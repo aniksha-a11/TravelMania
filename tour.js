@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('date3').value = today;
   });
   
-  // Simple booking handler
   function bookPackage(event, packageName) {
     event.preventDefault();
     alert('Thank you for booking the "' + packageName + '" package with Travel Mania! We will contact you soon.');
