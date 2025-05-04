@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Explore Bali with Pathway: Discover top destinations, cuisine, best foods, weather, and more." />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <title>Explore Bali | Pathway</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+
+    :root {
+      --primary-color: #2563eb;
+      --primary-color-dark: #1e40af;
+      --secondary-color: #f8fafc;
+      --text-dark: #111827;
+      --text-light: #6b7280;
+      --extra-light: #ffffff;
+      --accent-color: #f97316;
+      --gradient: linear-gradient(135deg, #2563eb, #60a5fa);
+      --glass-bg: rgba(255, 255, 255, 0.15);
+      --max-width: 1400px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background-color: var(--secondary-color);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .section__container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+
+    header {
+      position: relative;
+      height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: var(--gradient);
+    }
+
+    .header__bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      transform: translateY(0);
+      transition: transform 0.2s ease;
+      filter: brightness(0.8);
+    }
+
+    .header__overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .header__content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 1000px;
+      padding: 2rem;
+      color: var(--extra-light);
+    }
+
+    .header__content h1 {
+      font-size: clamp(3rem, 6vw, 5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 1s ease-out;
+    }
+
+    .header__content p {
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-weight: 400;
+      opacity: 0.95;
+      margin-bottom: 2rem;
+      animation: fadeIn 1.2s ease-out 0.3s forwards;
+    }
+
+    .header__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--accent-color);
+      color: var(--extra-light);
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.75rem;
+      transition: all 0.3s ease;
+    }
+
+    .header__cta:hover {
+      background: #ea580c;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(249, 115, 22, 0.4);
+    }
+
+    .destinations__container h2,
+    .cuisine__container h2,
+    .food__container h2,
+    .weather__container h2,
+    .cta__container h2 {
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 3rem;
+      background: var(--gradient);
+      -webkit-text-fill-color: transparent;
+    }
+
+    .destinations__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .destination__card {
+      background: var(--extra-light);
+      border-radius: 1.5rem;
+      overflow: hidden;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+      transition: all 0.5s ease;
+      cursor: pointer;
+    }
+
+    .destination__card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .destination__image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .destination_card:hover .destination_image {
+      transform: scale(1.1);
+    }
+
+    .destination__content {
+      padding: 1.5rem;
+      text-align: left;
+    }
+
+    .destination__content h4 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .destination__content p {
+      font-size: 1rem;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+    }
+
+    .destination__content a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--accent-color);
+      color: var(--extra-light);
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.75rem;
+      transition: all 0.3s ease;
+    }
+
+    .destination__content a:hover {
+      background: #ea580c;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(249, 115, 22, 0.4);
+    }
+
+    .cuisine__container {
+      background: var(--gradient);
+      border-radius: 2rem;
+      padding: 3rem;
+      color: var(--extra-light);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .cuisine__content p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .cuisine__highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+    }
+
+    .highlight__item {
+      text-align: center;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .highlight__item:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-5px);
+    }
+
+    .highlight__icon {
+      font-size: 2.5rem;
+      color: var(--extra-light);
+      margin-bottom: 1rem;
+    }
+
+    .highlight__item h4 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .highlight__item p {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    .food__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+    }
+
+    .food__card {
+      background: var(--extra-light);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .food__card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    }
+
+    .food__image {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .food__card h4 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .food__card p {
+      font-size: 1rem;
+      color: var(--text-light);
+    }
+
+    .weather__content p {
+      font-size: 1.1rem;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+
+    .weather__seasons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+    }
+
+    .season__item {
+      background: var(--extra-light);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .season__item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    }
+
+    .season__icon {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .season__item h4 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .season__item p {
+      font-size: 1rem;
+      color: var(--text-light);
+    }
+
+    .weather__tip {
+      margin-top: 2rem;
+      text-align: center;
+      background: var(--glass-bg);
+      backdrop-filter: blur(8px);
+      padding: 1.5rem;
+      border-radius: 1rem;
+    }
+
+    .weather__tip p {
+      font-size: 1.1rem;
+      color: var(--text-dark);
+    }
+
+    .cta__container {
+      text-align: center;
+      background: var(--gradient);
+      border-radius: 2rem;
+      padding: 3rem;
+      color: var(--extra-light);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .cta__container p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta__button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--accent-color);
+      color: var(--extra-light);
+      font-weight: 600;
+      text-decoration: none;
+      padding: 1rem 2rem;
+      border-radius: 0.75rem;
+      transition: all 0.3s ease;
+    }
+
+    .cta__button:hover {
+      background: #ea580c;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(249, 115, 22, 0.4);
+    }
+
+    .attribution {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      text-align: center;
+      margin-top: 3rem;
+      padding: 1.5rem;
+      background: var(--glass-bg);
+      backdrop-filter: blur(8px);
+      border-radius: 1rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @media (max-width: 992px) {
+      header {
+        height: 70vh;
+      }
+
+      .header__content h1 {
+        font-size: 3.5rem;
+      }
+
+      .destinations__grid,
+      .cuisine__highlights,
+      .food__grid,
+      .weather__seasons {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header__content h1 {
+        font-size: 2.8rem;
+      }
+
+      .header__content p {
+        font-size: 1.2rem;
+      }
+
+      .cuisine__container,
+      .cta__container {
+        padding: 2rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .header__content h1 {
+        font-size: 2.2rem;
+      }
+
+      .destinations__container h2,
+      .cuisine__container h2,
+      .food__container h2,
+      .weather__container h2,
+      .cta__container h2 {
+        font-size: 1.8rem;
+      }
+
+      .destination__content,
+      .food__card,
+      .season__item {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img class="header__bg" src="https://images.pexels.com/photos/169647/pexels-photo-169647.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Bali background" />
+    <div class="header__overlay"></div>
+    <div class="header__content">
+      <h1>Discover the Paradise of Bali</h1>
+      <p>Immerse yourself in lush jungles, pristine beaches, and vibrant culture.</p>
+      <a href="#destinations" class="header__cta">Start Exploring <i class="ri-arrow-right-line"></i></a>
+    </div>
+  </header>
+
+  <section id="destinations" class="section_container destinations_container">
+    <h2>Top Destinations in Bali</h2>
+    <div class="destinations__grid">
+      <div class="destination__card">
+        <img class="destination__image" src="https://images.pexels.com/photos/2166553/pexels-photo-2166553.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Uluwatu Temple" />
+        <div class="destination__content">
+          <h4>Uluwatu Temple</h4>
+          <p>A clifftop temple with stunning ocean views and traditional Kecak dance performances.</p>
+          <a href="https://www.balitourismboard.org/uluwatu-temple" target="_blank">Learn More <i class="ri-arrow-right-line"></i></a>
+        </div>
+      </div>
+      <div class="destination__card">
+        <img class="destination__image" src="https://images.pexels.com/photos/753639/pexels-photo-753639.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Ubud Monkey Forest" />
+        <div class="destination__content">
+          <h4>Ubud Monkey Forest</h4>
+          <p>A sacred sanctuary with playful monkeys, ancient temples, and lush greenery.</p>
+          <a href="https://www.monkeyforestubud.com" target="_blank">Learn More <i class="ri-arrow-right-line"></i></a>
+        </div>
+      </div>
+      <div class="destination__card">
+        <img class="destination__image" src="https://images.pexels.com/photos/2166711/pexels-photo-2166711.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tegalalang Rice Terraces" />
+        <div class="destination__content">
+          <h4>Tegalalang Rice Terraces</h4>
+          <p>Emerald-green rice fields offering scenic beauty and cultural insights.</p>
+          <a href="https://www.balitourismboard.org/tegalalang-rice-terrace" target="_blank">Learn More <i class="ri-arrow-right-line"></i></a>
+        </div>
+      </div>
+      <div class="destination__card">
+        <img class="destination__image" src="https://images.pexels.com/photos/1285625/pexels-photo-1285625.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Seminyak Beach" />
+        <div class="destination__content">
+          <h4>Seminyak Beach</h4>
+          <p>A trendy beach with golden sands, vibrant nightlife, and luxury resorts.</p>
+          <a href="https://www.balitourismboard.org/seminyak" target="_blank">Learn More <i class="ri-arrow-right-line"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section_container cuisine_container">
+    <h2>Balinese Cuisine</h2>
+    <div class="cuisine__content">
+      <p>Bali’s cuisine is a vibrant fusion of bold flavors, fresh ingredients, and aromatic spices. From sizzling street food to elegant dining in Ubud, every dish reflects the island’s rich cultural tapestry. Expect fiery sambals, fragrant coconut curries, and tropical fruits that burst with flavor, served with warm Balinese hospitality.</p>
+      <div class="cuisine__highlights">
+        <div class="highlight__item">
+          <i class="ri-restaurant-line highlight__icon"></i>
+          <h4>Signature Dishes</h4>
+          <p>Try Babi Guling (suckling pig) or Nasi Goreng, Indonesia’s iconic fried rice. Savor these at Warung Mendez in Ubud for authentic flavors.</p>
+        </div>
+        <div class="highlight__item">
+          <i class="ri-leaf-line highlight__icon"></i>
+          <h4>Vegetarian Delights</h4>
+          <p>Enjoy Gado-Gado, a vegetable salad with peanut sauce, or Tempeh, a fermented soy delicacy, at Zest Ubud.</p>
+        </div>
+        <div class="highlight__item">
+          <i class="ri-drinks-line highlight__icon"></i>
+          <h4>Drinks & Desserts</h4>
+          <p>Refresh with Es Kelapa Muda (young coconut water) or indulge in Pisang Goreng (fried bananas) at local warungs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section_container food_container">
+    <h2>Best Foods to Try in Bali</h2>
+    <div class="food__grid">
+      <div class="food__card">
+        <img class="food__image" src="https://images.pexels.com/photos/1234535/pexels-photo-1234535.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Babi Guling" />
+        <h4>Babi Guling</h4>
+        <p>Crispy-skinned suckling pig with aromatic spices, a Balinese feast.</p>
+      </div>
+      <div class="food__card">
+        <img class="food__image" src="https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Nasi Goreng" />
+        <h4>Nasi Goreng</h4>
+        <p>Flavorful fried rice topped with a fried egg and spicy sambal.</p>
+      </div>
+      <div class="food__card">
+        <img class="food__image" src="https://images.pexels.com/photos/1410235/pexels-photo-1410235.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Sate Lilit" />
+        <h4>Sate Lilit</h4>
+        <p>Minced fish or chicken skewers grilled with coconut and spices.</p>
+      </div>
+      <div class="food__card">
+        <img class="food__image" src="https://images.pexels.com/photos/5946966/pexels-photo-5946966.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Pisang Goreng" />
+        <h4>Pisang Goreng</h4>
+        <p>Sweet fried bananas, a perfect tropical dessert.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section_container weather_container">
+    <h2>Bali Weather</h2>
+    <div class="weather__content">
+      <p>Bali’s tropical climate offers warmth and sunshine year-round, with two main seasons. Here’s what to expect:</p>
+      <div class="weather__seasons">
+        <div class="season__item">
+          <i class="ri-sun-line season__icon"></i>
+          <h4>Dry Season (Apr-Oct)</h4>
+          <p>Sunny and warm (24-31°C), ideal for beaches and outdoor adventures.</p>
+        </div>
+        <div class="season__item">
+          <i class="ri-rainy-line season__icon"></i>
+          <h4>Wet Season (Nov-Mar)</h4>
+          <p>Humid with frequent showers (25-32°C), lush landscapes, and fewer crowds.</p>
+        </div>
+      </div>
+      <div class="weather__tip">
+        <p><strong>Tip:</strong> Pack lightweight clothing, sunscreen, and a rain jacket for sudden showers. Check forecasts for outdoor plans!</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section_container cta_container">
+    <h2>Plan Your Balinese Escape</h2>
+    <p>Book your stay with Pathway and dive into the tropical beauty of Bali.</p>
+    <a href="hotel.html" class="cta__button">Book a Hotel Now <i class="ri-arrow-right-line"></i></a>
+  </section>
+
+  <footer class="section__container">
+    <p class="attribution">Photos provided by <a href="https://www.pexels.com" target="_blank">Pexels</a></p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script>
+    window.addEventListener("scroll", () => {
+      const headerBg = document.querySelector(".header__bg");
+      const scrollPosition = window.scrollY;
+      headerBg.style.transform = translateY(${scrollPosition * 0.3}px);
+    });
+  </script>
+</body>
+</html>
