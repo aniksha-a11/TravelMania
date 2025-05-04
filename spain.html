@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Explore Spain with Pathway: Discover top destinations, cuisine, best foods, weather, and more." />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <title>Explore Spain | Pathway</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+
+    :root {
+      --primary-color: #2563eb;
+      --primary-color-dark: #1e40af;
+      --secondary-color: #f8fafc;
+      --text-dark: #111827;
+      --text-light: #6b7280;
+      --extra-light: #ffffff;
+      --accent-color: #f97316;
+      --gradient: linear-gradient(135deg, #2563eb, #60a5fa);
+      --glass-bg: rgba(255, 255, 255, 0.15);
+      --max-width: 1400px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background-color: var(--secondary-color);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .section__container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+
+    header {
+      position: relative;
+      height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: var(--gradient);
+    }
+
+    .header__bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      transform: translateY(0);
+      transition: transform 0.2s ease;
+      filter: brightness(0.8);
+    }
+
+    .header__overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .header__content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 1000px;
+      padding: 2rem;
+      color: var(--extra-light);
+    }
+
+    .header__content h1 {
+      font-size: clamp(3rem, 6vw, 5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 1s ease-out;
+    }
+
+    .header__content p {
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-weight: 400;
+      opacity: 0.95;
+      margin-bottom: 2rem;
+      animation: fadeIn 1.2s ease-out 0.3s forwards;
+    }
+
+    .header__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--accent-color);
+      color: var(--extra-light);
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.75rem;
+      transition: all 0.3s ease;
+    }
+
+    .header__cta:hover {
+      background: #ea580c;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(249, 115, 22, 0.4);
+    }
+
+    .destinations__container h2,
+    .cuisine__container h2,
+    .food__container h2,
+    .weather__container h2,
+    .cta__container h2 {
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 3rem;
+      background: var(--gradient);
+      -webkit-text-fill-color: transparent;
+    }
+
+    .destinations__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .destination__card {
+      background: var(--extra-light);
+      border-radius: 1.5rem;
+      overflow: hidden;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+      transition: all 0.5s ease;
+      cursor: pointer;
+    }
+
+    .destination__card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .destination__image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .destination_card:hover .destination_image {
+      transform: scale(1.1);
+    }
+
+    .destination__content {
+      padding: 1.5rem;
+      text-align: left;
+    }
+
+    .destination__content h4 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .destination__content p {
+      font-size: 1rem;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+    }
+
+    .destination__content a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--accent-color);
+      color: var(--extra-light);
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.75rem;
+      transition: all 0.3s ease;
+    }
+
+    .destination__content a:hover {
+      background: #ea580c;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(249, 115, 22, 0.4);
+    }
+
+    .cuisine__container {
+      background: var(--gradient);
+      border-radius: 2rem;
+      padding: 3rem;
+      color: var(--extra-light);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .cuisine__content p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .cuisine__highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+    }
+
+    .highlight__item {
+      text-align: center;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .highlight__item:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-5px);
+    }
+
+    .highlight__icon {
+      font-size: 2.5rem;
+      color: var(--extra-light);
+      margin-bottom: 1rem;
+    }
+
+    .highlight__item h4 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .highlight__item p {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    .food__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+    }
+
+    .food__card {
+      background: var(--extra-light);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .food__card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    }
+
+    .food__image {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .food__card h4 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .food__card p {
+      font-size: 1rem;
+      color: var(--text-light);
+    }
+
+    .weather__content p {
+      font-size: 1.1rem;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+
+    .weather__seasons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+    }
+
+    .season__item {
+      background: var(--extra-light);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .season__item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    }
+
+    .season__icon {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .season__item h4 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .season__item p {
+      font-size: 1rem;
+      color: var(--text-light);
+    }
+
+    .weather__tip {
+      margin-top: 2rem;
+      text-align: center;
+      background: var(--glass-bg);
+      backdrop-filter: blur(8px);
+      padding: 1.5rem;
+      border-radius: 1rem;
+    }
+
+    .weather__tip p {
+      font-size: 1.1rem;
+      color: var(--text-dark);
+    }
+
+    .cta__container {
+      text-align: center;
+      background: var(--gradient);
+      border-radius: 2rem;
+      padding: 3rem;
+      color: var(--extra-light);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .cta__container p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta__button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--accent-color);
+      color: var(--extra-light);
+      font-weight: 600;
+      text-decoration: none;
+      padding: 1rem 2rem;
+      border-radius: 0.75rem;
+      transition: all 0.3s ease;
+    }
+
+    .cta__button:hover {
+      background: #ea580c;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(249, 115, 22, 0.4);
+    }
+
+    .attribution {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      text-align: center;
+      margin-top: 3rem;
+      padding: 1.5rem;
+      background: var(--glass-bg);
+      backdrop-filter: blur(8px);
+      border-radius: 1rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @media (max-width: 992px) {
+      header {
+        height: 70vh;
+      }
+
+      .header__content h1 {
+        font-size: 3.5rem;
+      }
+
+      .destinations__grid,
+      .cuisine__highlights,
+      .food__grid,
+      .weather__seasons {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header__content h1 {
+        font-size: 2.8rem;
+      }
+
+      .header__content p {
+        font-size: 1.2rem;
+      }
+
+      .cuisine__container,
+      .cta__container {
+        padding: 2rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .header__content h1 {
+        font-size: 2.2rem;
+      }
+
+      .destinations__container h2,
+      .cuisine__container h2,
+      .food__container h2,
+      .weather__container h2,
+      .cta__container h2 {
+        font-size: 1.8rem;
+      }
+
+      .destination__content,
+      .food__card,
+      .season__item {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img class="header__bg" src="https://images.pexels.com/photos/3722818/pexels-photo-3722818.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Spain background" />
+    <div class="header__overlay"></div>
+    <div class="header__content">
+      <h1>Embrace the Passion of Spain</h1>
+      <p>Discover vibrant cities, historic landmarks, and sun-drenched coastlines.</p>
+      <a href="#destinations" class="header__cta">Start Exploring <i class="ri-arrow-right-line"></i></a>
+    </div>
+  </header>
+
+  <section id="destinations" class="section_container destinations_container">
+    <h2>Top Destinations in Spain</h2>
+    <div class="destinations__grid">
+      <div class="destination__card">
+        <img class="destination__image" src="https://images.unsplash.com/photo-1558560354-c17a5af844d6?q=80&w=1936&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sagrada Familia" />
+        <div class="destination__content">
+          <h4>Sagrada Familia</h4>
+          <p>Gaudí’s unfinished masterpiece, a stunning basilica in Barcelona.</p>
+          <a href="https://sagradafamilia.org/en/" target="_blank">Learn More <i class="ri-arrow-right-line"></i></a>
+        </div>
+      </div>
+      <div class="destination__card">
+        <img class="destination__image" src="https://images.unsplash.com/photo-1620677368158-32b1293fac36?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Alhambra" />
+        <div class="destination__content">
+          <h4>Alhambra</h4>
+          <p>A breathtaking Moorish palace and fortress in Granada.</p>
+          <a href="https://www.alhambra-patronato.es/en/" target="_blank">Learn More <i class="ri-arrow-right-line"></i></a>
+        </div>
+      </div>
+      <div class="destination__card">
+        <img class="destination__image" src="https://plus.unsplash.com/premium_photo-1697729617750-aac974815e4d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Plaza de España" />
+        <div class="destination__content">
+          <h4>Plaza de España</h4>
+          <p>An iconic square in Seville with stunning architecture and canals.</p>
+          <a href="https://www.andalucia.org/en/sevilla-monuments-plaza-de-espana" target="_blank">Learn More <i class="ri-arrow-right-line"></i></a>
+        </div>
+      </div>
+      <div class="destination__card">
+        <img class="destination__image" src="https://images.unsplash.com/photo-1565352336881-dc2c1f7d2d5b?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Ibiza" />
+        <div class="destination__content">
+          <h4>Ibiza</h4>
+          <p>A vibrant island known for nightlife, beaches, and historic Dalt Vila.</p>
+          <a href="https://www.ibiza.travel/en/" target="_blank">Learn More <i class="ri-arrow-right-line"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section_container cuisine_container">
+    <h2>Spanish Cuisine</h2>
+    <div class="cuisine__content">
+      <p>Spanish cuisine is a fiery celebration of bold flavors and regional diversity. From tapas shared with friends to hearty paellas by the coast, every dish is infused with passion and tradition. Savor meals in lively tavernas or bustling markets, where fresh ingredients shine.</p>
+      <div class="cuisine__highlights">
+        <div class="highlight__item">
+          <i class="ri-restaurant-line highlight__icon"></i>
+          <h4>Tapas & Mains</h4>
+          <p>Enjoy Patatas Bravas, Gambas al Ajillo, or Paella Valenciana at Casa Lucio in Madrid for authentic flavors.</p>
+        </div>
+        <div class="highlight__item">
+          <i class="ri-leaf-line highlight__icon"></i>
+          <h4>Regional Specialties</h4>
+          <p>Try Gazpacho, a chilled tomato soup, or Fabada Asturiana, a hearty bean stew, in local eateries.</p>
+        </div>
+        <div class="highlight__item">
+          <i class="ri-wine-glass-line highlight__icon"></i>
+          <h4>Wine & Desserts</h4>
+          <p>Pair Rioja wines with Churros con Chocolate or creamy Flan at Chocolatería San Ginés.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section_container food_container">
+    <h2>Best Foods to Try in Spain</h2>
+    <div class="food__grid">
+      <div class="food__card">
+        <img class="food__image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJt1kDcWSfaSLs64slfhOElIt8DtP3uqYAtQ&s" alt="Paella" />
+        <h4>Paella</h4>
+        <p>A saffron-infused rice dish with seafood, chicken, or vegetables.</p>
+      </div>
+      <div class="food__card">
+        <img class="food__image" src="https://www.simplyrecipes.com/thmb/UiqoGtmbOYp9o8TLFJU_CuPz2Q4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/simply-recipes-patatas-bravas-lead-3-eca48aed6f9b4c4db38c35fdd1dc1509.jpg" alt="Patatas Bravas" />
+        <h4>Patatas Bravas</h4>
+        <p>Crispy potatoes with spicy tomato sauce and aioli.</p>
+      </div>
+      <div class="food__card">
+        <img class="food__image" src="https://cdn.prod.website-files.com/5a3583819e1d100001ac0d30/66b245b1a5ac446c3d9486f2_WhatsApp%20Image%202024-07-31%20at%207.11.47%20PM%20(1).jpeg" alt="Jamón Ibérico" />
+        <h4>Jamón Ibérico</h4>
+        <p>Cured ham, a Spanish delicacy with rich, nutty flavors.</p>
+      </div>
+      <div class="food__card">
+        <img class="food__image" src="https://hips.hearstapps.com/hmg-prod/images/churros-index-661d4692d05e4.jpg?crop=0.8888888888888888xw:1xh;center,top&resize=1200:*" alt="Churros" />
+        <h4>Churros</h4>
+        <p>Fried dough sticks served with thick hot chocolate.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section_container weather_container">
+    <h2>Spain Weather</h2>
+    <div class="weather__content">
+      <p>Spain’s diverse climate ranges from Mediterranean warmth to cooler northern regions, making it a year-round destination. Here’s what to expect:</p>
+      <div class="weather__seasons">
+        <div class="season__item">
+          <i class="ri-sun-line season__icon"></i>
+          <h4>Spring (Mar-May)</h4>
+          <p>Mild and pleasant (12-22°C), perfect for city tours and festivals.</p>
+        </div>
+        <div class="season__item">
+          <i class="ri-sun-cloudy-line season__icon"></i>
+          <h4>Summer (Jun-Aug)</h4>
+          <p>Hot and sunny (20-35°C), ideal for beaches and siestas.</p>
+        </div>
+        <div class="season__item">
+          <i class="ri-leaf-line season__icon"></i>
+          <h4>Autumn (Sep-Nov)</h4>
+          <p>Warm and comfortable (15-25°C), great for wine regions and hikes.</p>
+        </div>
+        <div class="season__item">
+          <i class="ri-snowy-line season__icon"></i>
+          <h4>Winter (Dec-Feb)</h4>
+          <p>Cool and mild (5-15°C), with sunny days in the south.</p>
+        </div>
+      </div>
+      <div class="weather__tip">
+        <p><strong>Tip:</strong> Pack light layers, sunscreen, and a hat for summer, and a jacket for northern winters.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section_container cta_container">
+    <h2>Plan Your Spanish Adventure</h2>
+    <p>Book your stay with Pathway and immerse yourself in Spain’s vibrant culture.</p>
+    <a href="hotel.html" class="cta__button">Book a Hotel Now <i class="ri-arrow-right-line"></i></a>
+  </section>
+
+  <footer class="section__container">
+    <p class="attribution">Photos provided by <a href="https://www.pexels.com" target="_blank">Pexels</a></p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script>
+    window.addEventListener("scroll", () => {
+      const headerBg = document.querySelector(".header__bg");
+      const scrollPosition = window.scrollY;
+      headerBg.style.transform = translateY(${scrollPosition * 0.3}px);
+    });
+
+    document.getElementById("bookHotelBtn").addEventListener("click", function(event) {
+    event.preventDefault();
+    window.location.href = "hotel.html"; 
+  });
+  </script>
+</body>
+</html>
