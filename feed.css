@@ -120,12 +120,12 @@ body {
   }
   
   button:nth-child(2) {
-    background-color: #2563eb;
+    background-color: #268aff;
     color: white;
   }
   
   button:nth-child(2):hover {
-    background-color: #1d4ed8;
+    background-color: #268aff;
   }
   
   @keyframes fadeIn {
