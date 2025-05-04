@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Explore India with Pathway: Discover top destinations, cuisine, best foods, weather, and more." />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <title>Explore India | Pathway</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+
+    :root {
+      --primary-color: #2563eb;
+      --primary-color-dark: #1e40af;
+      --secondary-color: #f8fafc;
+      --text-dark: #111827;
+      --text-light: #6b7280;
+      --extra-light: #ffffff;
+      --accent-color: #f97316;
+      --gradient: linear-gradient(135deg, #2563eb, #60a5fa);
+      --glass-bg: rgba(255, 255, 255, 0.15);
+      --max-width: 1400px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background-color: var(--secondary-color);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .section__container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+
+    header {
+      position: relative;
+      height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: var(--gradient);
+    }
+
+    .header__bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      transform: translateY(0);
+      transition: transform 0.2s ease;
+      filter: brightness(0.8);
+    }
+
+    .header__overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .header__content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 1000px;
+      padding: 2rem;
+      color: var(--extra-light);
+    }
+
+    .header__content h1 {
+      font-size: clamp(3rem, 6vw, 5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 1s ease-out;
+    }
+
+    .header__content p {
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-weight: 400;
+      opacity: 0.95;
+      margin-bottom: 2rem;
+      animation: fadeIn 1.2s ease-out 0.3s forwards;
+    }
+
+    .header__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--accent-color);
+      color: var(--extra-light);
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.75rem;
+      transition: all 0.3s ease;
+    }
+
+    .header__cta:hover {
+      background: #ea580c;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(249, 115, 22, 0.4);
+    }
+
+    .destinations__container h2,
+    .cuisine__container h2,
+    .food__container h2,
+    .weather__container h2,
+    .cta__container h2 {
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 3rem;
+      background: var(--gradient);
+      -webkit-text-fill-color: transparent;
+    }
+
+    .destinations__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .destination__card {
+      background: var(--extra-light);
+      border-radius: 1.5rem;
+      overflow: hidden;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+      transition: all 0.5s ease;
+      cursor: pointer;
+    }
+
+    .destination__card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .destination__image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .destination_card:hover .destination_image {
+      transform: scale(1.1);
+    }
+
+    .destination__content {
+      padding: 1.5rem;
+      text-align: left;
+    }
+
+    .destination__content h4 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .destination__content p {
+      font-size: 1rem;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+    }
+
+    .destination__content a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--accent-color);
+      color: var(--extra-light);
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.75rem;
+      transition: all 0.3s ease;
+    }
+
+    .destination__content a:hover {
+      background: #ea580c;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(249, 115, 22, 0.4);
+    }
+
+    .cuisine__container {
+      background: var(--gradient);
+      border-radius: 2rem;
+      padding: 3rem;
+      color: var(--extra-light);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .cuisine__content p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .cuisine__highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+    }
+
+    .highlight__item {
+      text-align: center;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .highlight__item:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-5px);
+    }
+
+    .highlight__icon {
+      font-size: 2.5rem;
+      color: var(--extra-light);
+      margin-bottom: 1rem;
+    }
+
+    .highlight__item h4 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .highlight__item p {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    .food__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+    }
+
+    .food__card {
+      background: var(--extra-light);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .food__card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    }
+
+    .food__image {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .food__card h4 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .food__card p {
+      font-size: 1rem;
+      color: var(--text-light);
+    }
+
+    .weather__content p {
+      font-size: 1.1rem;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+
+    .weather__seasons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+    }
+
+    .season__item {
+      background: var(--extra-light);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .season__item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    }
+
+    .season__icon {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .season__item h4 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .season__item p {
+      font-size: 1rem;
+      color: var(--text-light);
+    }
+
+    .weather__tip {
+      margin-top: 2rem;
+      text-align: center;
+      background: var(--glass-bg);
+      backdrop-filter: blur(8px);
+      padding: 1.5rem;
+      border-radius: 1rem;
+    }
+
+    .weather__tip p {
+      font-size: 1.1rem;
+      color: var(--text-dark);
+    }
+
+    .cta__container {
+      text-align: center;
+      background: var(--gradient);
+      border-radius: 2rem;
+      padding: 3rem;
+      color: var(--extra-light);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .cta__container p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta__button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--accent-color);
+      color: var(--extra-light);
+      font-weight: 600;
+      text-decoration: none;
+      padding: 1rem 2rem;
+      border-radius: 0.75rem;
+      transition: all 0.3s ease;
+    }
+
+    .cta__button:hover {
+      background: #ea580c;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(249, 115, 22, 0.4);
+    }
+
+    .attribution {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      text-align: center;
+      margin-top: 3rem;
+      padding: 1.5rem;
+      background: var(--glass-bg);
+      backdrop-filter: blur(8px);
+      border-radius: 1rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @media (max-width: 992px) {
+      header {
+        height: 70vh;
+      }
+
+      .header__content h1 {
+        font-size: 3.5rem;
+      }
+
+      .destinations__grid,
+      .cuisine__highlights,
+      .food__grid,
+      .weather__seasons {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header__content h1 {
+        font-size: 2.8rem;
+      }
+
+      .header__content p {
+        font-size: 1.2rem;
+      }
+
+      .cuisine__container,
+      .cta__container {
+        padding: 2rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .header__content h1 {
+        font-size: 2.2rem;
+      }
+
+      .destinations__container h2,
+      .cuisine__container h2,
+      .food__container h2,
+      .weather__container h2,
+      .cta__container h2 {
+        font-size: 1.8rem;
+      }
+
+      .destination__content,
+      .food__card,
+      .season__item {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img class="header__bg" src="https://plus.unsplash.com/premium_photo-1661962542692-4fe7a4ad6b54?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="India background" />
+    <div class="header__overlay"></div>
+    <div class="header__content">
+      <h1>Uncover the Soul of India</h1>
+      <p>Explore ancient monuments, vibrant markets, and diverse cultures.</p>
+      <a href="#destinations" class="header__cta">Start Exploring <i class="ri-arrow-right-line"></i></a>
+    </div>
+  </header>
+
+  <section id="destinations" class="section_container destinations_container">
+    <h2>Top Destinations in India</h2>
+    <div class="destinations__grid">
+      <div class="destination__card">
+        <img class="destination__image" src="https://images.pexels.com/photos/1603650/pexels-photo-1603650.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Taj Mahal" />
+        <div class="destination__content">
+          <h4>Taj Mahal</h4>
+          <p>An iconic marble mausoleum, a UNESCO World Heritage site in Agra.</p>
+          <a href="https://www.tajmahal.gov.in/" target="_blank">Learn More <i class="ri-arrow-right-line"></i></a>
+        </div>
+      </div>
+      <div class="destination__card">
+        <img class="destination__image" src="https://images.pexels.com/photos/3581364/pexels-photo-3581364.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Jaipur" />
+        <div class="destination__content">
+          <h4>Jaipur</h4>
+          <p>The Pink City, known for its palaces, forts, and vibrant bazaars.</p>
+          <a href="https://tourism.rajasthan.gov.in/jaipur.html" target="_blank">Learn More <i class="ri-arrow-right-line"></i></a>
+        </div>
+      </div>
+      <div class="destination__card">
+        <img class="destination__image" src="https://d22eux7aqicogj.cloudfront.net/assets/destination-hero-image/varanasi.webp" alt="Varanasi" />
+        <div class="destination__content">
+          <h4>Varanasi</h4>
+          <p>A spiritual city with ancient ghats along the Ganges River.</p>
+          <a href="https://varanasi.nic.in/tourism/" target="_blank">Learn More <i class="ri-arrow-right-line"></i></a>
+        </div>
+      </div>
+      <div class="destination__card">
+        <img class="destination__image" src="https://static.toiimg.com/thumb/msid-91888972,width-748,height-499,resizemode=4,imgsize-243110/Beautiful-experiences-to-indulge-in-during-Kerala-backwater-tours.jpg" alt="Kerala Backwaters" />
+        <div class="destination__content">
+          <h4>Kerala Backwaters</h4>
+          <p>Serene waterways, lush greenery, and houseboat experiences.</p>
+          <a href="https://www.keralatourism.org/backwaters" target="_blank">Learn More <i class="ri-arrow-right-line"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section_container cuisine_container">
+    <h2>Indian Cuisine</h2>
+    <div class="cuisine__content">
+      <p>Indian cuisine is a kaleidoscope of flavors, blending aromatic spices, fresh herbs, and regional diversity. From creamy curries to sizzling street food, every dish tells a story of tradition and innovation. Dine at bustling dhabas or elegant restaurants to experience India’s culinary soul.</p>
+      <div class="cuisine__highlights">
+        <div class="highlight__item">
+          <i class="ri-restaurant-line highlight__icon"></i>
+          <h4>Curries & Mains</h4>
+          <p>Savor Butter Chicken, Rogan Josh, or Chole Bhature at Karim’s in Delhi for authentic tastes.</p>
+        </div>
+        <div class="highlight__item">
+          <i class="ri-leaf-line highlight__icon"></i>
+          <h4>Street Food</h4>
+          <p>Try Pani Puri, Vada Pav, or Dosa at local stalls or Sarafa Bazaar in Indore.</p>
+        </div>
+        <div class="highlight__item">
+          <i class="ri-cake-line highlight__icon"></i>
+          <h4>Sweets & Drinks</h4>
+          <p>Indulge in Gulab Jamun or sip Masala Chai at traditional sweet shops like Haldiram’s.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section_container food_container">
+    <h2>Best Foods to Try in India</h2>
+    <div class="food__grid">
+      <div class="food__card">
+        <img class="food__image" src="https://www.supaintsonplates.com/wp-content/uploads/2020/10/1652252960857_resize_21.jpg" alt="Butter Chicken" />
+        <h4>Curry</h4>
+        <p>Creamy tomato-based curry with delicious aroma.</p>
+      </div>
+      <div class="food__card">
+        <img class="food__image" src="https://i0.wp.com/www.happyandharried.com/wp-content/uploads/2018/04/IMG_2115.jpg" alt="Dosa" />
+        <h4>Dosa</h4>
+        <p>Crispy rice pancake served with chutney and sambar.</p>
+      </div>
+      <div class="food__card">
+        <img class="food__image" src="https://static.toiimg.com/thumb/61048461.cms?imgsize=1981854&width=800&height=800" alt="Pani Puri" />
+        <h4>Pani Puri</h4>
+        <p>Crispy shells filled with spiced water and chickpeas.</p>
+      </div>
+      <div class="food__card">
+        <img class="food_image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-XMu53XhbNAGrVCCdQn8QcCg3nWR5giVkQ&s" alt="Gulab Jamun" />
+        <h4>Gulab Jamun</h4>
+        <p>Sweet, syrup-soaked dough balls, a festive treat.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section_container weather_container">
+    <h2>India Weather</h2>
+    <div class="weather__content">
+      <p>India’s climate varies widely, from tropical south to Himalayan north, offering diverse travel experiences. Here’s what to expect:</p>
+      <div class="weather__seasons">
+        <div class="season__item">
+          <i class="ri-sun-line season__icon"></i>
+          <h4>Summer (Mar-Jun)</h4>
+          <p>Hot and dry (25-45°C), best for hill stations like Shimla.</p>
+        </div>
+        <div class="season__item">
+          <i class="ri-rainy-line season__icon"></i>
+          <h4>Monsoon (Jul-Sep)</h4>
+          <p>Humid with heavy rains (20-35°C), ideal for Kerala’s greenery.</p>
+        </div>
+        <div class="season__item">
+          <i class="ri-leaf-line season__icon"></i>
+          <h4>Autumn (Oct-Nov)</h4>
+          <p>Pleasant and clear (15-30°C), perfect for festivals and sightseeing.</p>
+        </div>
+        <div class="season__item">
+          <i class="ri-snowy-line season__icon"></i>
+          <h4>Winter (Dec-Feb)</h4>
+          <p>Cool and foggy (5-25°C), great for Delhi and Rajasthan.</p>
+        </div>
+      </div>
+      <div class="weather__tip">
+        <p><strong>Tip:</strong> Pack lightweight cotton for summer, rain gear for monsoon, and layers for winter, especially in the north.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section_container cta_container">
+    <h2>Plan Your Indian Journey</h2>
+    <p>Book your stay with Pathway and dive into India’s colorful tapestry.</p>
+    <a href="hotel.html" class="cta__button">Book a Hotel Now <i class="ri-arrow-right-line"></i></a>
+  </section>
+
+  <footer class="section__container">
+    <p class="attribution">Photos provided by <a href="https://www.pexels.com" target="_blank">Pexels</a></p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script>
+    window.addEventListener("scroll", () => {
+      const headerBg = document.querySelector(".header__bg");
+      const scrollPosition = window.scrollY;
+      headerBg.style.transform = translateY(${scrollPosition * 0.3}px);
+    });
+
+    document.getElementById("bookHotelBtn").addEventListener("click", function(event) {
+    event.preventDefault(); 
+    window.location.href = "hotel.html"; 
+  });
+  </script>
+</body>
+</html>
