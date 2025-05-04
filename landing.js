@@ -259,7 +259,6 @@ popupBtn.addEventListener("click", () => {
   newsletterPopup.classList.remove("show");
 });
 
-// Close popup when clicking outside
 newsletterPopup.addEventListener("click", (e) => {
   if (e.target === newsletterPopup) {
     newsletterPopup.classList.remove("show");

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Mania - Tour Packages</title>
+  <link rel="stylesheet" href="tour.css">
+</head>
+<body>
+  <header>
+    Travel Mania &mdash; Tour Packages
+  </header>
+  <div class="container">
+    <div class="packages-grid">
+      <!-- Package 1 -->
+      <div class="package-card">
+        <div>
+          <div class="package-title">Himalayan Adventure</div>
+          <div class="price-duration">
+            <span>₹28,000</span>
+            <span>7 Days</span>
+          </div>
+          <div class="package-info">Explore the breathtaking Himalayas with guided treks, camping, and local experiences.</div>
+          <div class="includes">
+            <div class="includes-title">What's Included:</div>
+            <ul>
+              <li>Accommodation (3-star hotels & camps)</li>
+              <li>Daily breakfast & dinner</li>
+              <li>Guided trekking tours</li>
+              <li>Airport transfers</li>
+            </ul>
+          </div>
+          <div class="excludes">
+            <div class="excludes-title">What's Excluded:</div>
+            <ul>
+              <li>Lunch</li>
+              <li>Personal expenses</li>
+              <li>Travel insurance</li>
+            </ul>
+          </div>
+        </div>
+        <form class="booking-form" onsubmit="return bookPackage(event, 'Himalayan Adventure')">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <input type="date" name="date" id="date1" required>
+          <button type="submit">Book Now</button>
+        </form>
+      </div>
+      <!-- Package 2 -->
+      <div class="package-card">
+        <div>
+          <div class="package-title">Goa Beach Escape</div>
+          <div class="price-duration">
+            <span>₹18,500</span>
+            <span>5 Days</span>
+          </div>
+          <div class="package-info">Relax on the golden beaches of Goa, enjoy water sports, and vibrant nightlife.</div>
+          <div class="includes">
+            <div class="includes-title">What's Included:</div>
+            <ul>
+              <li>4-star hotel stay</li>
+              <li>Breakfast</li>
+              <li>Airport pickup/drop</li>
+              <li>Two sightseeing tours</li>
+            </ul>
+          </div>
+          <div class="excludes">
+            <div class="excludes-title">What's Excluded:</div>
+            <ul>
+              <li>Lunch & dinner</li>
+              <li>Entry tickets</li>
+              <li>Personal expenses</li>
+            </ul>
+          </div>
+        </div>
+        <form class="booking-form" onsubmit="return bookPackage(event, 'Goa Beach Escape')">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <input type="date" name="date" id="date2" required>
+          <button type="submit">Book Now</button>
+        </form>
+      </div>
+      <!-- Package 3 -->
+      <div class="package-card">
+        <div>
+          <div class="package-title">Kerala Backwaters</div>
+          <div class="price-duration">
+            <span>₹22,000</span>
+            <span>6 Days</span>
+          </div>
+          <div class="package-info">Cruise through Kerala's serene backwaters and experience unique culture and cuisine.</div>
+          <div class="includes">
+            <div class="includes-title">What's Included:</div>
+            <ul>
+              <li>Houseboat stay</li>
+              <li>All meals on houseboat</li>
+              <li>Local sightseeing</li>
+              <li>Transfers</li>
+            </ul>
+          </div>
+          <div class="excludes">
+            <div class="excludes-title">What's Excluded:</div>
+            <ul>
+              <li>Airfare</li>
+              <li>Personal expenses</li>
+              <li>Travel insurance</li>
+            </ul>
+          </div>
+        </div>
+        <form class="booking-form" onsubmit="return bookPackage(event, 'Kerala Backwaters')">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <input type="date" name="date" id="date3" required>
+          <button type="submit">Book Now</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="tour.js"></script>
+</body>
+</html>
