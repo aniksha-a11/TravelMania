@@ -1,12 +1,12 @@
-TravelMania****
+**TravelMania**
 
 TravelMania is a responsive travel website designed to help users explore top destinations, browse curated travel itineraries, and access hotel and flight booking options through affiliate links. It offers a visually rich and intuitive interface, built entirely with front-end technologies.
 
-Project Overview
+**Project Overview**
 
 TravelMania serves as a one-stop platform for travel enthusiasts. The landing page highlights key offerings with smooth navigation and animations. Users can explore beautiful destinations, view planned itineraries, and proceed to hotel and flight bookings seamlessly. The website focuses on providing inspiration and convenience to travelers through an elegant and mobile-friendly design.
 
-Key Features****
+**Key Features**
 
 - Beautifully designed landing page with hero section and call-to-action
 - Popular destinations displayed in interactive cards
@@ -16,7 +16,7 @@ Key Features****
 - Smooth scrolling and scroll-triggered animations
 - Built using HTML, CSS, JavaScript, and Bootstrap
 
-Tech Stack
+**Tech Stack**
 
 - HTML
 - CSS 
