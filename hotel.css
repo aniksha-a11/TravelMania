@@ -700,25 +700,20 @@ button:hover {
     padding: 2rem;
   }
 }
-
 @media (max-width: 576px) {
   .header__content h1 {
     font-size: 2.2rem;
   }
-
   .search__container h2 {
     font-size: 1.8rem;
   }
-
   input, select, button, textarea {
     padding: 1rem 1.5rem;
     font-size: 1rem;
   }
-
   .intro__section {
     padding: 2rem;
   }
-
   .faq__question {
     font-size: 1rem;
   }

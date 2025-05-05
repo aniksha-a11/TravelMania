@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // script.js
 
 document.getElementById('plannerForm').addEventListener('submit', function(event) {
@@ -39,9 +38,6 @@ document.getElementById('plannerForm').addEventListener('submit', function(event
       document.getElementById('result').innerHTML = resultHTML;
     }, 1500); // 1.5 second delay to simulate processing
   });
-  
-||||||| 0604d02
-=======
 document.getElementById('plannerForm').addEventListener('submit', function(event) {
     event.preventDefault();
   
@@ -80,4 +76,3 @@ document.getElementById('plannerForm').addEventListener('submit', function(event
       document.getElementById('result').innerHTML = resultHTML;
     }, 1500); // 1.5 second delay to simulate processing
   });
->>>>>>> b8e029debabcae7879516428600549e852322a75

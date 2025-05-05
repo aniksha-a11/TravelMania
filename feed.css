@@ -7,7 +7,8 @@ body {
     align-items: center;
     height: 100vh;
   }
-  
+
+
   .feedback-container {
     background-color: white;
     padding: 2rem;
@@ -19,7 +20,7 @@ body {
   }
   
   h2 {
-    color: #2563eb;
+    color: #268aff;
     margin-bottom: 0.5rem;
   }
   
@@ -46,7 +47,7 @@ body {
   }
   
   .rating-options input:checked + div {
-    border: 2px solid #2563eb;
+    border: 2px solid #268aff;
     background-color: #dbeafe;
   }
   
@@ -66,6 +67,9 @@ body {
   input[type="text"],
   input[type="email"],
   textarea {
+    font-family: monospace;
+    font-size: 16px;
+    color: #555;
     width: 100%;
     padding: 0.75rem;
     margin-bottom: 0.75rem;
@@ -77,7 +81,7 @@ body {
   
   input:focus,
   textarea:focus {
-    border-color: #2563eb;
+    border-color: #268aff;
     box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
   }
   
@@ -90,7 +94,7 @@ body {
   }
   
   .checkbox a {
-    color: #2563eb;
+    color: #268aff;
     text-decoration: underline;
   }
   
@@ -137,4 +141,8 @@ body {
       transform: scale(1);
     }
   }
-  
+  ::placeholder {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 14px;
+    color: #555;
+  }
