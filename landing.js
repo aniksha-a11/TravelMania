@@ -113,6 +113,38 @@ function redirectToHotelDeals() {
   window.location.href = "hotel.html";
 }
 
+function redirectToParis() {
+  window.location.href = "paris.html";
+}
+
+function redirectToBali() {
+  window.location.href = "bali.html";
+}
+
+function redirectToGreece() {
+  window.location.href = "greece.html";
+}
+
+function redirectToSpain() {
+  window.location.href = "spain.html";
+}
+
+function redirectToIndia() {
+  window.location.href = "india.html";
+}
+
+function redirectToJapan() {
+  window.location.href = "japan.html";
+}
+
+function redirectToTeam() {
+  window.location.href = "team.html";
+}
+
+function redirectToPackages() {
+  window.location.href = "tourpackages.html";
+}
+
 const GEOAPIFY_API_KEY = "0800bac5b5b54cde947a4587c772dd92";
 const PEXELS_API_KEY = "DgJ3ScJfDJSfO6gJPdtNLIxUubUFQD6j6dzEOjMpPWHGhy1qJrIg4Ji1";
 
@@ -211,56 +243,29 @@ async function displayAttractions(query) {
 
 searchBtn.addEventListener("click", () => {
   const query = searchInput.value.trim();
-  const activeTab = document.querySelector(".search__tab.active");
-
-  if (!activeTab || activeTab.dataset.tab !== "guides") {
-    return;
-  }
-
-  if (!query) {
+  if (query) {
+    displayAttractions(query);
+  } else {
     searchResults.innerHTML =
-      '<p class="search__error">Please enter a valid search term.</p>';
-    return;
+      '<p class="search__error">Please enter a city or country to search.</p>';
   }
-
-  displayAttractions(query);
-});
-
-searchInput.addEventListener("keypress", (e) => {
-  if (e.key === "Enter") {
-    searchBtn.click();
-  }
-});
-
-searchInput.addEventListener("focus", () => {
-  searchInput.parentElement.style.boxShadow = "0 6px 25px rgba(40, 135, 255, 0.2)";
-});
-
-searchInput.addEventListener("blur", () => {
-  searchInput.parentElement.style.boxShadow = "0 4px 15px rgba(0, 0, 0, 0.1)";
 });
 
 const newsletterForm = document.getElementById("newsletter-form");
-const newsletterPopup = document.getElementById("newsletter-popup");
+const popup = document.getElementById("newsletter-popup");
 const popupClose = document.getElementById("popup-close");
-const popupBtn = newsletterPopup.querySelector(".popup__btn");
+const popupBtn = document.querySelector(".popup__btn");
 
 newsletterForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  newsletterPopup.classList.add("show");
+  popup.classList.add("show");
   newsletterForm.reset();
 });
 
 popupClose.addEventListener("click", () => {
-  newsletterPopup.classList.remove("show");
+  popup.classList.remove("show");
 });
 
 popupBtn.addEventListener("click", () => {
-  newsletterPopup.classList.remove("show");
-});
-
-newsletterPopup.addEventListener("click", (e) => {
-  if (e.target === newsletterPopup) {
-    newsletterPopup.classList.remove("show");
-  }
+  popup.classList.remove("show");
 });
