@@ -1,4 +1,3 @@
-// Set current date as min value for date inputs
 document.addEventListener('DOMContentLoaded', function() {
     const today = new Date().toISOString().split('T')[0];
     document.getElementById('date1').setAttribute('min', today);
