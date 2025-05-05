@@ -35,7 +35,7 @@
       rel="stylesheet"
     />
     <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
-    <link rel="stylesheet" href="newland.css" />
+    <link rel="stylesheet" href="landing.css" />
     <title>TravelMania</title>
   </head>
   <body>
@@ -52,12 +52,13 @@
         <li><a href="#home">HOME</a></li>
         <li><a href="#about">ABOUT</a></li>
         <li><a href="#tour">TOUR</a></li>
-        <li><a href="#package">PACKAGE</a></li>
+        <li><a href="javascript:void(0)" onclick="redirectToPackages()">PACKAGE</a></li>
         <li><a href="#contact">CONTACT</a></li>
-        <li><a href="#">BOOK TRIP</a></li>
+        <li><a href="javascript:void(0)" onclick="redirectToTeam()">OUR TEAM</a></li>
+        <li><a href="log.html">SIGN UP</a></li>
       </ul>
       <div class="nav__btns">
-        <button class="btn">BOOK TRIP</button>
+        <a href="log.html" class="btn">Sign up</a>
       </div>
     </nav>
 
@@ -126,11 +127,17 @@
     <section class="popular__destinations">
       <h1><b>POPULAR DESTINATIONS</b></h1>
       <div class="popular__grid">
-        <div class="popular__card">
-          <img src="https://images.pexels.com/photos/12562201/pexels-photo-12562201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Paris" />
+        <div class="popular__card" onclick="redirectToParis()">
+          <img
+            src="https://images.pexels.com/photos/12562201/pexels-photo-12562201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            alt="Paris"
+          />
           <div class="popular_card_overlay">
             <h5>Paris</h5>
-            <p>Discover the romantic charm of the City of Light, with its iconic Eiffel Tower and world-class museums.</p>
+            <p>
+              Discover the romantic charm of the City of Light, with its iconic Eiffel
+              Tower and world-class museums.
+            </p>
             <div class="popular_card_rating">
               <span><i class="ri-star-fill"></i></span>
               <span><i class="ri-star-fill"></i></span>
@@ -140,11 +147,17 @@
             </div>
           </div>
         </div>
-        <div class="popular__card">
-          <img src="https://images.unsplash.com/photo-1532186651327-6ac23687d189?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Bali" />
+        <div class="popular__card" onclick="redirectToBali()">
+          <img
+            src="https://images.unsplash.com/photo-1532186651327-6ac23687d189?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            alt="Bali"
+          />
           <div class="popular_card_overlay">
             <h5>Bali</h5>
-            <p>Relax on exotic beaches, explore vibrant culture, and enjoy stunning landscapes in this tropical paradise.</p>
+            <p>
+              Relax on exotic beaches, explore vibrant culture, and enjoy stunning
+              landscapes in this tropical paradise.
+            </p>
             <div class="popular_card_rating">
               <span><i class="ri-star-fill"></i></span>
               <span><i class="ri-star-fill"></i></span>
@@ -154,11 +167,17 @@
             </div>
           </div>
         </div>
-        <div class="popular__card">
-          <img src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Greece" />
+        <div class="popular__card" onclick="redirectToGreece()">
+          <img
+            src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            alt="Greece"
+          />
           <div class="popular_card_overlay">
             <h5>Greece</h5>
-            <p>Explore ancient ruins, stunning islands, and crystal-clear waters in this Mediterranean gem.</p>
+            <p>
+              Explore ancient ruins, stunning islands, and crystal-clear waters in
+              this Mediterranean gem.
+            </p>
             <div class="popular_card_rating">
               <span><i class="ri-star-fill"></i></span>
               <span><i class="ri-star-fill"></i></span>
@@ -168,11 +187,17 @@
             </div>
           </div>
         </div>
-        <div class="popular__card">
-          <img src="https://images.unsplash.com/photo-1559386081-325882507af7?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Spain" />
+        <div class="popular__card" onclick="redirectToSpain()">
+          <img
+            src="https://images.unsplash.com/photo-1559386081-325882507af7?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            alt="Spain"
+          />
           <div class="popular_card_overlay">
             <h5>Spain</h5>
-            <p>Experience vibrant festivals, historic architecture, and sunny beaches in this lively country.</p>
+            <p>
+              Experience vibrant festivals, historic architecture, and sunny beaches
+              in this lively country.
+            </p>
             <div class="popular_card_rating">
               <span><i class="ri-star-fill"></i></span>
               <span><i class="ri-star-fill"></i></span>
@@ -182,11 +207,17 @@
             </div>
           </div>
         </div>
-        <div class="popular__card">
-          <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="India" />
+        <div class="popular__card" onclick="redirectToIndia()">
+          <img
+            src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            alt="India"
+          />
           <div class="popular_card_overlay">
             <h5>India</h5>
-            <p>Immerse yourself in rich cultural traditions, ancient wonders, and vibrant modern cities.</p>
+            <p>
+              Immerse yourself in rich cultural traditions, ancient wonders, and
+              vibrant modern cities.
+            </p>
             <div class="popular_card_rating">
               <span><i class="ri-star-fill"></i></span>
               <span><i class="ri-star-fill"></i></span>
@@ -196,11 +227,17 @@
             </div>
           </div>
         </div>
-        <div class="popular__card">
-          <img src="https://images.unsplash.com/photo-1542640244-7e672d6cef4e?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Japan" />
+        <div class="popular__card" onclick="redirectToJapan()">
+          <img
+            src="https://images.unsplash.com/photo-1542640244-7e672d6cef4e?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            alt="Japan"
+          />
           <div class="popular_card_overlay">
             <h5>Japan</h5>
-            <p>Discover a blend of ancient traditions, modern innovation, and breathtaking natural beauty.</p>
+            <p>
+              Discover a blend of ancient traditions, modern innovation, and
+              breathtaking natural beauty.
+            </p>
             <div class="popular_card_rating">
               <span><i class="ri-star-fill"></i></span>
               <span><i class="ri-star-fill"></i></span>
@@ -212,7 +249,7 @@
         </div>
       </div>
     </section>
-
+    
     <section class="section_container journey_container" id="tour">
       <h2 class="section__header">Journey To The Sky Made Simple!</h2>
       <p class="section__description">Effortless Planning for Your Next Adventure</p>
@@ -510,6 +547,7 @@
             <li><a href="#">Flights</a></li>
             <li><a href="#">Hotels</a></li>
             <li><a href="#">Cruise</a></li>
+            <li><a href="feed.html"><span><i class="ri-feedback-line"></i></span>Feedback</a></li>
           </ul>
         </div>
         <div class="footer__col">
@@ -554,6 +592,6 @@
       </div>
     </div>
 
-    <script src="newland.js"></script>
+    <script src="landing.js"></script>
   </body>
 </html>
