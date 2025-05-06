@@ -3,6 +3,7 @@ const apiToken = "30a895fb9d9c9cc4a3da73b4b8f419ea";
 const apiBaseUrl = "https://api.travelpayouts.com/v1";
 const baseRedirectUrl = "https://aviasales.tp.st/4EgGp71m";
 
+
 window.addEventListener("scroll", () => {
   const headerBg = document.querySelector(".header__bg");
   const scrollPosition = window.scrollY;
